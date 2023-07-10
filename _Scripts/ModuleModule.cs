@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 // using System.Text.RegularExpressions; // Useful for implementing TP.
-// using KModkit; // You must import this namespace to KMBombInfoExtensions, among other things.
+// using KModkit; // You must import this namespace to use KMBombInfoExtensions, among other things.
 using UnityEngine;
 // ! Remember to remove unnecessary using directives once the module is finished.
 
+// * KModKit Documentation: https://github.com/Qkrisi/ktanemodkit/wiki
 // ! Remember that the class and file names have to match.
 public class ModuleModule : MonoBehaviour {
 
@@ -12,11 +13,12 @@ public class ModuleModule : MonoBehaviour {
     private KMAudio _audio;
     private KMBombModule _module;
 
-    // ! _isSolved should be kept even if not needed, to help with future souvenir implementation.
+    // * _isSolved should be kept even if not needed, to help with future souvenir implementation.
     private static int _moduleCount;
     private int _moduleId;
     private bool _isSolved;
 
+    // * Awake is called before anything else.
     private void Awake() {
         _moduleId = _moduleCount++;
 
@@ -32,20 +34,23 @@ public class ModuleModule : MonoBehaviour {
         // ! Declare other references here if needed.
     }
 
+    // * Start is called after Awake has been called on all components in the scene, but before anything else.
     // ! Things like querying edgework need to be done after Awake is called, eg. subscribing to ModuleButton.Selectable.OnInteract.
     private void Start() { }
 
-    // ! This is called once the lights turn on.
+    // * KMBombModule.OnActivate is called once the lights turn on.
     private void Activate() { }
 
-    // ! I don't typically use Update in the main script.
+    // * Update is called every frame. I don't typically use Update in the main script.
+    // ! Do not do resource-intensive tasks here, they will be called every frame and can slow the game down.
     private void Update() { }
 
-    // ! Sometimes, it helps to run code (eg. to stop looping sounds) when the module is no longer active
-    // ! (bomb explodes, quit to office, etc.).
+    // * OnDestroy is called when the module is 'destroyed'.
+    // * Examples of when this happens include when the bomb explodes, and if the player quits to the office.
+    // * Sometimes, it helps to run code at these times, for example to stop looping sounds.
     private void OnDestroy() { }
 
-    // ! Some modules do things here, like Phosphorescence's Bejeweled announcer voiceline.
+    // * These are quite self-explanatory.
     private void OnBombExploded() { }
     private void OnBombSolved() { }
 
