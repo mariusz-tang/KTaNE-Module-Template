@@ -4,6 +4,7 @@
 using UnityEngine;
 // ! Remember to remove unnecessary using directives once the module is finished.
 
+// * Template Wiki: https://github.com/TheKuroEver/KTaNE-Module-Template/wiki
 // * KModKit Documentation: https://github.com/Qkrisi/ktanemodkit/wiki
 // ! Remember that the class and file names have to match.
 public class ModuleModule : MonoBehaviour {
