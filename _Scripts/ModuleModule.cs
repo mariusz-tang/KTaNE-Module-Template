@@ -23,14 +23,14 @@ public class ModuleModule : MonoBehaviour {
     private void Awake() {
         _moduleId = s_moduleCount++;
 
-        _bombinfo = GetComponent<KMBombInfo>();
+        _bombInfo = GetComponent<KMBombInfo>();
         _audio = GetComponent<KMAudio>();
         _module = GetComponent<KMBombModule>();
 
         // ! Remove if not used.
         _module.OnActivate += Activate;
-        _bombinfo.OnBombExploded += OnBombExploded;
-        _bombinfo.OnBombSolved += OnBombSolved;
+        _bombInfo.OnBombExploded += OnBombExploded;
+        _bombInfo.OnBombSolved += OnBombSolved;
 
         // ! Declare other references here if needed.
     }
