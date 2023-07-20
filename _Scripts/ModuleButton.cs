@@ -14,7 +14,7 @@ public class ModuleButton : MonoBehaviour {
         Selectable.OnInteract += () => {
             _animator.SetBool("IsPressed", true);
             _audio.PlaySoundAtTransform("ButtonPress", transform);
-            return true;
+            return false;
         };
         Selectable.OnInteractEnded += () => {
             _animator.SetBool("IsPressed", false);
