@@ -1,17 +1,17 @@
 using System.Collections;
 // using System.Text.RegularExpressions;
 
-#pragma warning disable 414, IDE0051
+#pragma warning disable IDE1006
 // ! This name must match the name in the main class file.
 partial class ModuleModule
 {
-    private readonly string TwitchHelpMessage = @"Use '!{0} breh' to do things | '!{0} breh2' to do other things; extra information here.";
-
     // * TP Documentation: https://github.com/samfundev/KtaneTwitchPlays/wiki/External-Mod-Module-Support
     // ! Remove if not used. For more niche things like TwitchManualCode and ZenModeActive, look at tp docs ^^
-    private bool TwitchPlaysActive;
-    private bool TwitchShouldCancelCommand;
-#pragma warning restore 414
+    // private bool TwitchPlaysActive;
+    // private bool TwitchShouldCancelCommand;
+#pragma warning disable 414, IDE0051
+    private readonly string TwitchHelpMessage = @"Use '!{0} breh' to do things | '!{0} breh2' to do other things; extra information here.";
+#pragma warning restore 414, IDE1006
 
     private IEnumerator ProcessTwitchCommand(string command) {
         yield return "sendtochaterror TP has not yet been implemented.";

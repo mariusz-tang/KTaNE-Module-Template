@@ -63,7 +63,7 @@ public partial class ModuleModule : MonoBehaviour
     }
 
     public void Solve() {
-        Log("◯ Module solved.");
+        Log("◯ Module solved!");
         _module.HandlePass();
         // * Add code that should execute on solve (eg. a solve animation) here.
     }

@@ -10,28 +10,34 @@ public class Button : MonoBehaviour
     private Animator _animator;
     private KMSelectable _selectable;
 
+    [SerializeField] private AudioClip _buttonDownSound;
+    [SerializeField] private AudioClip _buttonUpSound;
+
     public event Action OnInteract;
     public event Action OnInteractEnded;
 
-    public bool IsActive { get; set; }
+    public bool IsActive { get; set; } = true;
 
-    public void Awake() {
+    protected void Awake() {
         _audio = GetComponentInParent<KMAudio>();
         _animator = GetComponent<Animator>();
         _selectable = GetComponent<KMSelectable>();
 
         _selectable.OnInteract += () => {
             _animator.SetBool("IsPressed", true);
-            _audio.PlaySoundAtTransform("ButtonPress", transform);
+            _audio.PlaySoundAtTransform(_buttonDownSound.name, transform);
             if (IsActive)
                 OnInteract?.Invoke();
             return false;
         };
         _selectable.OnInteractEnded += () => {
             _animator.SetBool("IsPressed", false);
-            _audio.PlaySoundAtTransform("ButtonRelease", transform);
+            _audio.PlaySoundAtTransform(_buttonUpSound.name, transform);
             if (IsActive)
                 OnInteractEnded?.Invoke();
         };
     }
+
+    public void Select() => _selectable.OnInteract();
+    public void Deselect() => _selectable.OnInteractEnded();
 }
