@@ -51,10 +51,7 @@ public partial class ModuleModule : MonoBehaviour
     // private void OnBombExploded() { } // Requires (*) and (**)
     // private void OnBombSolved() { } // Requires (*) and (***)
 
-    public void Log(string message) {
-        Debug.Log($"[Module #{_moduleId}] {message}");
-        throw new System.NotImplementedException("Change the logging tag to match the module name, then remove this throw statement.");
-    }
+    public void Log(string message) => Debug.Log($"[{_module.ModuleDisplayName} #{_moduleId}] {message}");
 
     public void Strike(string message) {
         Log($"✕ {message}");
