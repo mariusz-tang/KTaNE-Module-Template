@@ -6,12 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(KMSelectable), typeof(Animator))]
 public class Button : MonoBehaviour
 {
+    [SerializeField] private AudioClip _buttonDownSound;
+    [SerializeField] private AudioClip _buttonUpSound;
+
     private KMAudio _audio;
     private Animator _animator;
     private KMSelectable _selectable;
-
-    [SerializeField] private AudioClip _buttonDownSound;
-    [SerializeField] private AudioClip _buttonUpSound;
 
     public event Action OnInteract;
     public event Action OnInteractEnded;
