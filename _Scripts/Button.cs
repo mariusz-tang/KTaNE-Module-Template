@@ -3,11 +3,10 @@ using UnityEngine;
 
 // * This is a generic animated button component.
 // * Setup instructions: (WIP)
-[RequireComponent(typeof(KMSelectable), typeof(Animator))]
+[RequireComponent(typeof(KMSelectable))]
 public class Button : MonoBehaviour
 {
-    [SerializeField] private AudioClip _buttonDownSound;
-    [SerializeField] private AudioClip _buttonUpSound;
+    [SerializeField] private ButtonInfo _buttonTypeInfo;
 
     private KMAudio _audio;
     private Animator _animator;
@@ -20,19 +19,20 @@ public class Button : MonoBehaviour
 
     protected void Awake() {
         _audio = GetComponentInParent<KMAudio>();
-        _animator = GetComponent<Animator>();
+        _animator = gameObject.AddComponent<Animator>();
         _selectable = GetComponent<KMSelectable>();
 
+        _animator.runtimeAnimatorController = _buttonTypeInfo.AnimatorController;
         _selectable.OnInteract += () => {
             _animator.SetBool("IsPressed", true);
-            _audio.PlaySoundAtTransform(_buttonDownSound.name, transform);
+            _audio.PlaySoundAtTransform(_buttonTypeInfo.ButtonDownSound, transform);
             if (IsActive)
                 OnInteract?.Invoke();
             return false;
         };
         _selectable.OnInteractEnded += () => {
             _animator.SetBool("IsPressed", false);
-            _audio.PlaySoundAtTransform(_buttonUpSound.name, transform);
+            _audio.PlaySoundAtTransform(_buttonTypeInfo.ButtonUpSound, transform);
             if (IsActive)
                 OnInteractEnded?.Invoke();
         };
