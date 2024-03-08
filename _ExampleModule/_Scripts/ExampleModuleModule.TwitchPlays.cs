@@ -3,7 +3,7 @@ using UnityEngine; // WaitForSeconds
 
 #pragma warning disable 414, IDE0051, IDE1006
 // ! This name must match the name in the main class file.
-partial class ExampleModule
+partial class ExampleModuleModule
 {
     private readonly string TwitchHelpMessage = @"Use '!{0} solve' to press ""Solve!"" | '!{0} strike' to press ""Strike!"".";
 #pragma warning restore 414, IDE1006

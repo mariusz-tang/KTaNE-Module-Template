@@ -3,7 +3,7 @@
 // This is a very simple module with a solve button and a strike button.
 // Additionally, it displays its display name and module id, which can be helpful for testing other modules which depend on other modules being present on the bomb!
 [RequireComponent(typeof(KMBombModule), typeof(KMSelectable))]
-public partial class ExampleModule : MonoBehaviour
+public partial class ExampleModuleModule : MonoBehaviour
 {
     // This module uses the custom Button component included with the template.
     [SerializeField] private Button _solveButton;
